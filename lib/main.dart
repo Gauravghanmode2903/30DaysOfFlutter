@@ -1,4 +1,5 @@
-import 'package:firstproject/home_page.dart';
+import 'package:firstproject/pages/Login_Page.dart';
+import 'package:firstproject/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -6,12 +7,20 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage(),
+      themeMode: ThemeMode.light,
+      theme: ThemeData(primarySwatch: Colors.cyan),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+      ),
+      initialRoute: "/home",
+      routes: {
+        "/": (context) => LoginPage(),
+        "/home": (context) => HomePage(),
+        "/login": (context) => LoginPage()
+      },
     );
   }
 }
