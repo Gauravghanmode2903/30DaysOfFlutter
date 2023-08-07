@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final imageURL =
-        "https://photos.google.com/search/_cAF1QipOz37pgewLR-WKTIBFhENjk0wz1sRxoSiY_Ganesh/photo/AF1QipNR5cPRYmL38m4t9Nh9X73BDCH68JeNb5-ltRhG";
+    // ignore: prefer_const_declarations
+    final String imageURL =
+        "https://e1.pxfuel.com/desktop-wallpaper/672/914/desktop-wallpaper-cute-iphone-cartoon-boy-cartoon-character-boys.jpg";
 
     return Drawer(
       child: ListView(
@@ -14,13 +15,13 @@ class MyDrawer extends StatelessWidget {
             padding: EdgeInsets.zero,
             child: UserAccountsDrawerHeader(
               margin: EdgeInsets.zero,
-              accountName: Text("Gaurav Ghanmode"),
-              accountEmail: Text("ganeshghanmode2903@gmail.com"),
+              accountName: const Text("Gaurav Ghanmode"),
+              accountEmail: const Text("ganeshghanmode2903@gmail.com"),
               currentAccountPicture:
                   CircleAvatar(backgroundImage: NetworkImage(imageURL)),
             ),
           ),
-          ListTile(
+          const ListTile(
             leading: Icon(
               CupertinoIcons.home,
               color: Colors.white,
@@ -31,7 +32,7 @@ class MyDrawer extends StatelessWidget {
               style: TextStyle(color: Colors.black),
             ),
           ),
-          ListTile(
+          const ListTile(
             leading: Icon(
               CupertinoIcons.profile_circled,
               color: Colors.white,
@@ -42,7 +43,7 @@ class MyDrawer extends StatelessWidget {
               style: TextStyle(color: Colors.black),
             ),
           ),
-          ListTile(
+          const ListTile(
             leading: Icon(
               CupertinoIcons.mail,
               color: Colors.white,
