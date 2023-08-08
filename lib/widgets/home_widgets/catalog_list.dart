@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../../models/catalog.dart';
 import '../themes.dart';
-import '../../pages/home_page.dart';
 import 'catalog_image.dart';
 
 class CatalogList extends StatelessWidget {
