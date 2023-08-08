@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'package:velocity_x/velocity_x.dart';
+
 import '../models/catalog.dart';
 import '../utils/routes.dart';
 import '../widgets/home_widgets/catalog_header.dart';
@@ -55,8 +56,7 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CatalogHeader(),
-                if (CatalogModel.items != null &&
-                    CatalogModel.items!.isNotEmpty)
+                if (CatalogModel.items != null && CatalogModel.items!.isNotEmpty)
                   CatalogList().py16().expand()
                 else
                   CircularProgressIndicator().centered().expand(),
