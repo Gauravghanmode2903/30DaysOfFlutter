@@ -1,8 +1,7 @@
-import 'package:firstproject/pages/home_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../../models/catalog.dart';
-import '../themes.dart';
+import '../../pages/home_detail_page.dart';
 import 'catalog_image.dart';
 
 class CatalogList extends StatelessWidget {
@@ -12,14 +11,12 @@ class CatalogList extends StatelessWidget {
       shrinkWrap: true,
       itemCount: CatalogModel.items!.length,
       itemBuilder: (context, index) {
-        final catalog = CatalogModel.items![index];
+        final catalog = CatalogModel.getByPosition(index);
         return InkWell(
           onTap: () => Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => HomeDetailPage(
-                catalog: catalog,
-              ),
+              builder: (context) => HomeDetailPage(catalog: catalog),
             ),
           ),
           child: CatalogItem(catalog: catalog),
@@ -41,27 +38,30 @@ class CatalogItem extends StatelessWidget {
     return VxBox(
       child: Row(
         children: [
-          CatalogImage(
-            image: catalog.image,
+          Hero(
+            tag: Key(catalog.id.toString()),
+            child: CatalogImage(
+              image: catalog.image,
+            ),
           ),
           Expanded(
               child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              catalog.name.text.lg.color(MyTheme.darkBluishColor).bold.make(),
+              catalog.name.text.lg.color(context.accentColor).bold.make(),
               catalog.desc.text.textStyle(context.captionStyle).make(),
               10.heightBox,
               ButtonBar(
                 alignment: MainAxisAlignment.spaceBetween,
                 buttonPadding: EdgeInsets.zero,
                 children: [
-                  "Rs ${catalog.price}".text.bold.xl.make(),
+                  "RS ${catalog.price}".text.bold.xl.make(),
                   ElevatedButton(
                     onPressed: () {},
                     style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(MyTheme.darkBluishColor),
+                        backgroundColor: MaterialStateProperty.all(
+                            context.theme.buttonColor),
                         shape: MaterialStateProperty.all(
                           StadiumBorder(),
                         )),
@@ -73,6 +73,6 @@ class CatalogItem extends StatelessWidget {
           ))
         ],
       ),
-    ).white.rounded.square(150).make().py16();
+    ).color(context.cardColor).rounded.square(150).make().py16();
   }
 }
