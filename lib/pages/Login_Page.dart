@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
-
 import '../utils/routes.dart';
 
 class LoginPage extends StatefulWidget {
@@ -37,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               children: [
                 Image.asset(
-                  "assets/images/hey.png",
+                  "assets/images/login_image.png",
                   fit: BoxFit.cover,
                 ),
                 SizedBox(
