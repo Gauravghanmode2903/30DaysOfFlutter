@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -32,8 +31,8 @@ class _HomePageState extends State<HomePage> {
 
   loadData() async {
     await Future.delayed(Duration(seconds: 2));
-    final catalogJson =
-        await rootBundle.loadString("assets/files/catalog.json");
+     final catalogJson =
+    await rootBundle.loadString("assets/files/catalog.json");
 
     //final response = await http.get(Uri.parse(url));
     //final catalogJson = response.body;
@@ -54,8 +53,8 @@ class _HomePageState extends State<HomePage> {
           mutations: {AddMutation, RemoveMutation},
           builder: (ctx, dynamic, VxStatus) => FloatingActionButton(
             onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
-            backgroundColor: context.theme.cardColor,
-            child: const Icon(
+            backgroundColor: context.theme.buttonColor,
+            child: Icon(
               CupertinoIcons.cart,
               color: Colors.white,
             ),
@@ -63,19 +62,11 @@ class _HomePageState extends State<HomePage> {
               color: Vx.gray200,
               size: 22,
               count: _cart.items.length,
-              textStyle: const TextStyle(
+              textStyle: TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
               )),
         ),
-        // floatingActionButton: FloatingActionButton(
-        //   onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
-        //   backgroundColor: context.theme.cardColor,
-        //   child: const Icon(
-        //     CupertinoIcons.cart,
-        //     color: Colors.white,
-        //   ),
-        // ),
         body: SafeArea(
           child: Container(
             padding: Vx.m32,
@@ -83,8 +74,7 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CatalogHeader(),
-                if (CatalogModel.items != null &&
-                    CatalogModel.items!.isNotEmpty)
+                if (CatalogModel.items != null && CatalogModel.items!.isNotEmpty)
                   CatalogList().py16().expand()
                 else
                   CircularProgressIndicator().centered().expand(),
